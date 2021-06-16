@@ -1,0 +1,95 @@
+﻿@model SisHotel.Models.Hotel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>
+    Dados dos Hotéis
+</h2>
+<fieldset>
+    <legend>Dados dos Hotéis:</legend>
+    <dl>
+        <dt>
+            Nome Hotel:
+        </dt>
+
+        <dd>
+            @Model.Nome
+        </dd>
+
+        <dt>
+            Descrição:
+        </dt>
+        <dd>
+            @Model.Descricao
+        </dd>
+
+        <dt>
+            Avaliação
+        </dt>
+        <dd>
+            @Model.avaliacao
+        </dd>
+
+
+        <dt>
+            Comodidades:
+        </dt>
+        <dd>
+            @Model.TipoComodidade
+        </dd>
+    </dl>
+</fieldset>
+
+<fieldSet>
+    <legend>Endereço Hotel</legend>
+    <dl>
+        <dt>
+            Logradouro:
+        </dt>
+
+        <dd>
+            @Model.Logradouro
+        </dd>
+
+        <dt>
+            Numero:
+        </dt>
+        <dd>
+            @Model.Numero
+        </dd>
+
+        <dt>
+            Complemento
+        </dt>
+        <dd>
+            @Model.Complemento
+        </dd>
+
+
+        <dt>
+            Estado:
+        </dt>
+        <dd>
+            @Model.Estado
+        </dd>
+
+        <dt>
+            Cidade:
+        </dt>
+        <dd>
+            @Model.Cidade
+        </dd>
+    </dl>
+</fieldSet>
+
+
+
+<hr />
+<div>
+    <a href="/Hotel/Index" class="btn btn-info"><< Voltar</a>
+    <a href="/Hotel/Alterar/@Model.id" class="btn btn-warning">Alterar</a>
+    <a href="/Hotel/Excluir/@Model.id" class="btn btn-danger">Excluir</a>
+
+</div>

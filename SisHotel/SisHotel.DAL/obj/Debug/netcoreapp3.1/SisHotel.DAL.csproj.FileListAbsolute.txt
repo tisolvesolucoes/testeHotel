@@ -1,0 +1,12 @@
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\bin\Debug\netcoreapp3.1\SisHotel.DAL.deps.json
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\bin\Debug\netcoreapp3.1\SisHotel.DAL.dll
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\bin\Debug\netcoreapp3.1\SisHotel.DAL.pdb
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\bin\Debug\netcoreapp3.1\SisHotel.Models.dll
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\bin\Debug\netcoreapp3.1\SisHotel.Models.pdb
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\obj\Debug\netcoreapp3.1\SisHotel.DAL.csprojAssemblyReference.cache
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\obj\Debug\netcoreapp3.1\SisHotel.DAL.AssemblyInfoInputs.cache
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\obj\Debug\netcoreapp3.1\SisHotel.DAL.AssemblyInfo.cs
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\obj\Debug\netcoreapp3.1\SisHotel.DAL.csproj.CoreCompileInputs.cache
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\obj\Debug\netcoreapp3.1\SisHotel.DAL.csproj.CopyComplete
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\obj\Debug\netcoreapp3.1\SisHotel.DAL.dll
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\obj\Debug\netcoreapp3.1\SisHotel.DAL.pdb

@@ -1,0 +1,8 @@
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\bin\Debug\netcoreapp3.1\SisHotel.Models.deps.json
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\bin\Debug\netcoreapp3.1\SisHotel.Models.dll
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\bin\Debug\netcoreapp3.1\SisHotel.Models.pdb
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\obj\Debug\netcoreapp3.1\SisHotel.Models.AssemblyInfoInputs.cache
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\obj\Debug\netcoreapp3.1\SisHotel.Models.AssemblyInfo.cs
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\obj\Debug\netcoreapp3.1\SisHotel.Models.csproj.CoreCompileInputs.cache
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\obj\Debug\netcoreapp3.1\SisHotel.Models.dll
+C:\projetos\test\ExpenseOn\SisHotel\SisHotel.Models\obj\Debug\netcoreapp3.1\SisHotel.Models.pdb

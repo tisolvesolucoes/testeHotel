@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SisHotel.Models.Hotel>
+
+
+@{
+    ViewBag.Title = "Principal";
+}
+
+
+<h2>
+    Hoteis
+</h2>
+
+<p>
+    <a class="btn btn-success" href="/Hotel/Incluir">
+        Novo
+    </a>
+</p>
+<div class="row">
+    <form action="/Hotel/Buscar" method="post">
+        <div class="col-md-4">Buscar:</div>
+        <div class="col-md-8">
+            <input type="text" name="Nome" required>
+            <input class="btn btn-warning" type="submit" value="Buscar" required>
+        </div>
+
+    </form>
+</div>
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Avalição</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+
+    </tr>
+
+    @foreach (var hotel in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(hotel.Nome, "Detalhes", new { id = hotel.id })
+
+            </td>
+
+            <td>@hotel.Descricao</td>
+            <td>@hotel.avaliacao</td>
+
+            <td class="fa fa-edit">  @Html.ActionLink("Alterar", "Alterar", new { id = hotel.id })</td>
+            <td class="fa fa-trash-o">@Html.ActionLink("Excluir", "Excluir", new { id = hotel.id })</td>
+
+        </tr>
+    }
+</table>
+
+
+
+

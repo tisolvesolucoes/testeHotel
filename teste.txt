@@ -1,0 +1,284 @@
+Teste para candidatos à vaga de Desenvolvedor .NET
+Objetivo do Teste
+
+Criar uma aplicação que implemente um CRUD de Hotéis. O Hotel contém as seguintes características:
+
+    Nome
+    Resumo do Hotel (Descrição)
+    Avaliação (até 5 estrelas)
+    Endereço
+    Comodidades (Estacionamento, Piscina, Sauna, Wi-fi, Restaurante, Bar, etc.)
+
+A aplicação não precisa ter autenticação mas deve contemplar algumas funcionalidades:
+
+    Inserir, Apagar e Editar Hotéis.
+    Listar os Hotéis existentes no banco de dados
+    Filtrar a pesquisa por nome e/ou comodidades
+
+Front-end
+
+    Escolha a forma que achar melhor desde que tenha como base o Bootstrap em sua última versão.
+
+Back-end
+
+    ASP.NET (.NET Framework 4+ ou Core 2+, tanto faz)
+    Web API 2
+    Banco de dados (preferencialmente MySQL)
+
+O que esperamos da aplicação implementada
+
+    Organizada
+    Código bem estruturado com uso de boas práticas de desenvolvimento
+
+Diferencial
+
+    SOLID
+    Validação no front-end
+    Testes Unitários
+
+Ao finalizar o teste
+
+    Salve o teste em um arquivo compactado (zip/rar de preferência) e salve em algum drive. Depois envie somente o link para devs@expenseon.com com o título [Teste DotNet] Final.
+    Enviar manual de implantação da aplicação juntamente com scripts SQL.
+oo
+
+Estrutura / classes
+
+hotel
+------------------------------
+id 
+Descricao
+avaliacao
+comodidades
+====================================================
+endereco
+id 
+logradouro
+complemento
+numero
+estado
+cidade
+
+====================================================
+tipoComodidade
+id
+nomeComodidade
+Quantidade
+
+
+
+CREATE DATABASE SisHotelDb 
+GO
+
+use SisHotelDb 
+GO
+
+CREATE TABLE hotel (
+id int PRIMARY KEY identity(1,1),
+Nome varchar(50) NOT NULL,
+Descricao varchar(MAX) NOT NULL,
+avaliacao int NOT NULL DEFAULT 0,
+ativo int NOT NULL DEFAULT 0,
+)
+
+------------------------------------------------------
+
+GO
+
+CREATE PROCEDURE HotelIncluir(
+@Nome varchar(50),
+@Descricao varchar(MAX),
+@avaliacao int
+)
+AS
+INSERT INTO hotel(Nome, Descricao, avaliacao)
+VALUES(@Nome, @Descricao, @avaliacao)
+
+------------------------------------------------------
+
+GO
+
+CREATE PROCEDURE HotelListar
+
+AS
+
+SELECT [id]
+      ,[Nome]
+      ,[Descricao]
+      ,[avaliacao]
+      ,[ativo] 
+	  FROM hotel
+------------------------------------------------------
+
+GO
+
+CREATE PROCEDURE HotelDeletar
+@id int
+
+AS
+
+UPDATE hotel SET ativo = 0 WHERE id = @id
+------------------------------------------------------
+
+GO
+
+CREATE PROCEDURE HotelAtualizar
+@id int ,
+@Nome varchar(50),
+@Descricao varchar(MAX),
+@avaliacao int
+
+AS
+
+UPDATE hotel SET 
+ativo = 0,
+Nome=@Nome,
+Descricao=@Descricao,
+avaliacao=@avaliacao 
+WHERE id = @id
+
+------------------------------------------------------
+
+GO
+
+CREATE PROCEDURE HotelAvaliacao
+@id int ,
+@avaliacao int
+
+AS
+
+UPDATE hotel SET 
+ativo = 0,
+avaliacao=@avaliacao 
+WHERE id = @id
+
+
+  @Html.ActionLink(hotel.Nome, "Alterar", new { id = hotel.id })
+
+
+
+using System;
+using SisHotel.DAL;
+using SisHotel.Models;
+using System.Collections.Generic;
+
+namespace SisHotel.BLL
+{
+    public class HotelBLL : IHotelDados
+    {
+
+        private HotelBLL dal;
+        
+        public HotelBLL() {
+            this.dal = new HotelBLL();
+        }
+
+
+        public void Incluir(Hotel hotel)
+        {
+            Validar(hotel);
+            
+            var dal = new HotelDal();
+            dal.Incluir(hotel);
+
+        }
+
+        public void Alterar(Hotel hotel)
+        {
+            Validar(hotel);
+
+            dal.Alterar(hotel);
+        }
+
+        public void Excluir(int Id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+
+        public Hotel ObterPorId(int Id)
+        {            
+            var lista = dal.ObterPorId(Id);
+            return lista;
+        }
+
+        public Hotel ObterPorNome(string nome)
+        {
+             var lista = dal.ObterPorNome(nome);
+            return lista;
+        }
+
+        public List<Hotel> ObterTodos()
+        {
+            var lista = dal.ObterTodos();
+            return lista;
+
+        }
+
+        private static void Validar(Hotel hotel)
+        {
+            if (string.IsNullOrEmpty(hotel.Nome))
+            {
+                throw new ApplicationException("O nome do hotel deve ser informado!");
+            }
+            if (string.IsNullOrEmpty(hotel.Descricao))
+            {
+                throw new ApplicationException("Descrição do hotel deve ser informado!");
+
+            }
+            if (string.IsNullOrEmpty(hotel.TipoComodidade))
+            {
+                throw new ApplicationException("Tipo Comodidade do hotel deve ser informado!");
+            }
+        }
+
+    }
+}
+
+
+
+Nome do Teste:	ObterPorNomeTeste
+FullName do Teste:	SisHotelTestProject.SisHotelTestProject.HotelDalTeste.ObterPorNomeTeste
+Origem do Teste:	C:\projetos\test\ExpenseOn\SisHotel\SisHotelTestProject\HotelDalTeste.cs : linha 9
+Resultado do Teste:	Falha
+Duração do Teste:	0:00:00
+
+Nome do Teste:	ObterPorNomeTeste
+FullName do Teste:	SisHotelTestProject.SisHotelTestProject.HotelDalTeste.ObterPorNomeTeste
+Origem do Teste:	C:\projetos\test\ExpenseOn\SisHotel\SisHotelTestProject\HotelDalTeste.cs : linha 9
+Resultado do Teste:	Falha
+Duração do Teste:	0:00:00
+System.IndexOutOfRangeException
+  HResult=0x80131508
+  Message=Estado
+  Source=System.Data.SqlClient
+  StackTrace:
+   at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.SqlClient.SqlDataReader.get_Item(String name)
+   at SisHotel.DAL.HotelDal.ObterPorReader(IDataReader reader) in C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\HotelDAL.cs:line 102
+   at SisHotel.DAL.HotelDal.ObterTodos() in C:\projetos\test\ExpenseOn\SisHotel\SisHotel.DAL\HotelDAL.cs:line 82
+   at SisHotel.BLL.HotelBLL.ObterTodos() in C:\projetos\test\ExpenseOn\SisHotel\SisHotel.BLL\HotelBLL.cs:line 57
+   at SisHotel.UI.WEB.Controllers.HotelController.Index() in C:\projetos\test\ExpenseOn\SisHotel\SisHotel.UI.WEB\Controllers\HotelController.cs:line 111
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
